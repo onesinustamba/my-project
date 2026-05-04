@@ -1,0 +1,38 @@
+name: "My Project"
+description: "A demo project to test OnesAgent SDLC framework"
+
+tech_stack:
+  language: python
+  framework: fastapi
+  testing: [pytest, pytest-cov]
+  build_tools: []
+
+repositories:
+  code:
+    url: "https://github.com/onesinustamba/my-project.git"
+    type: git
+    branch: main
+
+deployment:
+  type: docker
+  registry: ghcr.io/onesinustamba
+  targets: [staging]
+
+cicd:
+  platform: github-actions
+  pipeline: ".github/workflows/ci.yml"
+
+task_management:
+  type: github
+  board: "https://github.com/users/onesinustamba/projects/1"
+
+ai:
+  provider: openai
+  model: gpt-4
+  api_key: "${ONESAGENT_API_KEY}"
+  base_url: "${ONESAGENT_BASE_URL:-https://api.openai.com/v1}"
+
+custom:
+  python_version: "3.9"
+  uvicorn_host: "0.0.0.0"
+  uvicorn_port: 8000
